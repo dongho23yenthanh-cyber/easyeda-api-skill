@@ -259,6 +259,10 @@ Promise&lt;[IPCB\_PrimitiveLine](./IPCB_PrimitiveLine.md) \| undefined&gt;
 
 Line primitive object
 
+## Remarks
+
+- 板框层（`BOARD_OUTLINE = 11`<!-- -->）须用 [Polyline](./PCB_PrimitivePolyline.md) 绘制，本接口不适用； - 走线与已有图元相交处会被原生分割（如调用 200 次可能得到 202 段），几何校验不能只比段数
+
 ## Example
 
 ```javascript

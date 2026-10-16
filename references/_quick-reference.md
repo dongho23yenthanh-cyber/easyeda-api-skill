@@ -141,8 +141,10 @@ class DMT_Project
 - **getallprojectsuuid**: `function getAllProjectsUuid( 	teamUuid?: string, 	folderUuid?: string, 	workspaceUuid?: string, ): Promise<Array<string>>;`
 - **getcurrentprojectinfo**: `function getCurrentProjectInfo(): Promise<IDMT_ProjectItem | undefined>;`
 - **getprojectinfo**: `function getProjectInfo(projectUuid: string): Promise<IDMT_BriefProjectItem | undefined>;`
+- **getreadystate**: `function getReadyState(projectUuid?: string): Promise<EDMT_ProjectReadyState>;`
 - **moveprojecttofolder**: `function moveProjectToFolder(projectUuid: string, folderUuid?: string): Promise<boolean>;`
 - **openproject**: `function openProject(projectUuid: string): Promise<boolean>;`
+- **waitforready**: `function waitForReady(projectUuid?: string, timeoutMs?: number): Promise<boolean>;`
 
 ---
 
@@ -1499,7 +1501,7 @@ class LIB_Device
 - **create**: *(签名过长，请查看详细文档)*
 - **delete**: `function delete(deviceUuid: string, libraryUuid: string): Promise<boolean | undefined>;`
 - **get**: `function get(deviceUuid: string, libraryUuid?: string): Promise<ILIB_DeviceItem | undefined>;`
-- **getbylcscids**: `function getByLcscIds<T extends boolean>( 	lcscIds: string, 	libraryUuid?: string, 	allowMultiMatch?: T, ): Promise<T extends true ? ILIB_DeviceSearchItem | undefined : Array<ILIB_DeviceSearchItem>>;`
+- **getbylcscids**: `function getByLcscIds<T extends boolean>( 	lcscIds: string, 	libraryUuid?: string, 	allowMultiMatch?: T, ): Promise<T extends true ? Array<ILIB_DeviceSearchItem> : ILIB_DeviceSearchItem | undefined>;`
 - **getbylcscids_1**: `function getByLcscIds( 	lcscIds: Array<string>, 	libraryUuid?: string, 	allowMultiMatch?: boolean, ): Promise<Array<ILIB_DeviceSearchItem>>;`
 - **modify**: *(签名过长，请查看详细文档)*
 - **search**: `function search( 	key: string, 	libraryUuid?: string, 	classification?: ILIB_ClassificationIndex | Array<string>, 	symbolType?: ELIB_SymbolType, 	itemsOfPage?: number, 	page?: number, ): Promise<Array<ILIB_DeviceSearchItem>>;`
@@ -1542,7 +1544,7 @@ class LIB_LibrariesList
 - **getpersonallibraryuuid**: `function getPersonalLibraryUuid(): Promise<string | undefined>;`
 - **getprojectlibraryuuid**: `function getProjectLibraryUuid(): Promise<string | undefined>;`
 - **getsystemlibraryuuid**: `function getSystemLibraryUuid(): Promise<string | undefined>;`
-- **registerextendlibrary**: `function registerExtendLibrary( 	title: string, 	libraryFunctions: { 		device?: ILIB_ExtendLibraryDeviceFunctions; 		symbol?: ILIB_ExtendLibrarySymbolFunctions; 		footprint?: ILIB_ExtendLibraryFootprintFunctions; 		cbb?: ILIB_ExtendLibraryCbbFunctions; 		model3d?: ILIB_ExtendLibrary3DModelFunctions; 	}, ): Promise<string | undefined>;`
+- **registerextendlibrary**: `function registerExtendLibrary( 	title: string, 	libraryFunctions: { 		device?: ILIB_ExtendLibraryDeviceFunctions; 		symbol?: ILIB_ExtendLibrarySymbolFunctions; 		footprint?: ILIB_ExtendLibraryFootprintFunctions; 		cbb?: ILIB_ExtendLibraryCbbFunctions; 		model3d?: ILIB_ExtendLibrary3DModelFunctions; 	}, 	props?: ILIB_RegisterExtendLibraryProps, ): Promise<string | undefined>;`
 
 ---
 
@@ -2161,11 +2163,17 @@ PCB &amp; footprint / ray tracer engine class
 class PCB_RayTracerEngine
 ```
 
+- **addsceneelement**: `function addSceneElement(file: Blob): Promise<IPCB_RayTracerSceneElement>;`
 - **dispose**: `function dispose(): Promise<void>;`
+- **exportimage**: `function exportImage(): Promise<Blob>;`
 - **getlightconfigurations**: `function getLightConfigurations(lightName: string): Promise<any>;`
-- **getrenderconfigurations**: `function getRenderConfigurations(): Promise<any>;`
-- **init**: `function init(): Promise<void>;`
-- **setrenderconfigurations**: `function setRenderConfigurations(configurations: any): Promise<void>;`
+- **getrenderconfigurations**: `function getRenderConfigurations(): Promise<IPCB_RayTracerRenderConfigurations>;`
+- **getsceneelements**: `function getSceneElements(): Promise<IPCB_RayTracerSceneElement[]>;`
+- **init**: `function init(resourceProvider?: (path: string) => Promise<Blob>): Promise<void>;`
+- **pauserender**: `function pauseRender(): Promise<void>;`
+- **removesceneelement**: `function removeSceneElement(id: string): Promise<void>;`
+- **setrenderconfigurations**: `function setRenderConfigurations(configurations: IPCB_RayTracerRenderConfigurations): Promise<void>;`
+- **setsceneelementtransform**: `function setSceneElementTransform( 	id: string, 	transform: IPCB_RayTracerSceneElementTransform, ): Promise<void>;`
 
 ---
 
@@ -2702,7 +2710,7 @@ class SYS_FileSystem
 - **readfilefromfilesystem**: `function readFileFromFileSystem(uri: string): Promise<File | undefined>;`
 - **revokeobjecturl**: `function revokeObjectURL(url: string): void;`
 - **savefile**: `function saveFile(fileData: File | Blob, fileName?: string): Promise<void>;`
-- **savefiletofilesystem**: `function saveFileToFileSystem( 	uri: string, 	fileData: File | Blob, 	fileName?: string, 	force?: boolean, ): Promise<boolean>;`
+- **savefiletofilesystem**: `function saveFileToFileSystem( 	uri: string, 	fileData: File | Blob, 	fileName?: string, ): Promise<boolean>;`
 
 ---
 

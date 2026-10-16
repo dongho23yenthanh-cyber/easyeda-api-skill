@@ -435,6 +435,10 @@ Promise&lt;Array&lt;[IPCB\_LayerItem](../interfaces/IPCB_LayerItem.md)<!-- -->&g
 
 Detailed properties of all layers
 
+## Remarks
+
+返回结果 \*\*包含停用的内层\*\*（如 16 铜层下可能返回 34 个 `SIGNAL`<!-- -->，其中多个 `layerStatus=0`<!-- -->）； 筛选可用层的条件为 `type === 'SIGNAL' && layerStatus === 1`<!-- -->（或 `layerStatus !== EPCB_LayerStatus.NOT_USED`<!-- -->）
+
 ## Example
 
 ```javascript

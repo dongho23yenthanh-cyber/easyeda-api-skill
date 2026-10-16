@@ -412,9 +412,9 @@ Symbol UUID
 // 1. 获取个人库 UUID
 const libraryUuid = await eda.lib_LibrariesList.getPersonalLibraryUuid();
 
-// 2. 创建符号（分类传 [] = 不分类；符号类型 '1' = 原理图符号，见 ELIB_SymbolType）
+// 2. 创建符号（分类传 [] = 不分类；符号类型见 ELIB_SymbolType）
 const symbolName = `嘉立创示例_新符号_${Date.now()}`;
-const symbolUuid = await eda.lib_Symbol.create(libraryUuid, symbolName, [], '1', '示例符号描述');
+const symbolUuid = await eda.lib_Symbol.create(libraryUuid, symbolName, [], ELIB_SymbolType.COMPONENT, '示例符号描述');
 
 // 创建类保留现场（新符号留在个人库中供观察）
 
@@ -633,6 +633,38 @@ Promise&lt;string \| undefined&gt;
 
 获取失败（如库条目不存在）将返回 `undefined`
 
+## Example
+
+```javascript
+// 1. 获取个人库 UUID 并新建符号作为读取对象（第四参数为符号类型，见 ELIB_SymbolType）
+const libraryUuid = await eda.lib_LibrariesList.getPersonalLibraryUuid();
+const symbolUuid = await eda.lib_Symbol.create(
+	libraryUuid,
+	`嘉立创示例_读取源码_${Date.now()}`,
+	[],
+	ELIB_SymbolType.COMPONENT
+);
+
+// 2. 读取该符号的文档源码（第二参数为符号所属库）
+const pending = eda.lib_Symbol.getDocumentSource(symbolUuid, libraryUuid);
+
+// 3. 等待 3 秒观察结果状态（当前版本 Promise 不 settle，用超时保护避免卡住）
+const settled = await Promise.race([
+	Promise.resolve(pending).then(
+		source => `fulfilled，源码长度 ${source ? source.length : '空'}`,
+		() => 'rejected'
+	),
+	new Promise(resolve => setTimeout(() => resolve('pending（3 秒内未返回）'), 3000)),
+]);
+
+// 4. 清理测试符号（查询类需要清理）
+await eda.lib_Symbol.delete(symbolUuid, libraryUuid);
+
+console.log('symbolUuid:', symbolUuid);
+console.log('returns:', typeof pending.then === 'function' ? 'Promise' : typeof pending);
+console.log('settled:', settled);
+```
+
 ### getrenderimage
 
 # LIB\_Symbol.getRenderImage() method
@@ -838,7 +870,7 @@ const symbolUuid = await eda.lib_Symbol.create(
 	libraryUuid,
 	`嘉立创示例_符号修改前_${Date.now()}`,
 	[],
-	'1',
+	ELIB_SymbolType.COMPONENT,
 	'修改前的描述'
 );
 
@@ -1167,6 +1199,10 @@ _(Optional)_ Library UUID, default is system library, you can use [LIB\_Librarie
 Promise&lt;Array&lt;[ILIB\_SymbolSearchItem](../interfaces/ILIB_SymbolSearchItem.md)<!-- -->&gt;&gt;
 
 List of searched symbol properties
+
+## Remarks
+
+该接口暂时不支持工程库的精确搜索
 
 ## Example
 

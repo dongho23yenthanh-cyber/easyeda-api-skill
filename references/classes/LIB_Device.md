@@ -570,7 +570,7 @@ function getByLcscIds<T extends boolean>(
 	lcscIds: string,
 	libraryUuid?: string,
 	allowMultiMatch?: T,
-): Promise<T extends true ? ILIB_DeviceSearchItem | undefined : Array<ILIB_DeviceSearchItem>>;
+): Promise<T extends true ? Array<ILIB_DeviceSearchItem> : ILIB_DeviceSearchItem | undefined>;
 ```
 
 ## Parameters
@@ -631,7 +631,7 @@ _(Optional)_ Whether a single LCSC C number is allowed to match multiple results
 
 ## Returns
 
-Promise&lt;T extends true ? [ILIB\_DeviceSearchItem](../interfaces/ILIB_DeviceSearchItem.md) \| undefined : Array&lt;[ILIB\_DeviceSearchItem](../interfaces/ILIB_DeviceSearchItem.md)<!-- -->&gt;&gt;
+Promise&lt;T extends true ? Array&lt;[ILIB\_DeviceSearchItem](../interfaces/ILIB_DeviceSearchItem.md)<!-- -->&gt; : [ILIB\_DeviceSearchItem](../interfaces/ILIB_DeviceSearchItem.md) \| undefined&gt;
 
 Searched device properties
 
@@ -642,6 +642,8 @@ By default, if multiple devices with the same C number are matched in the same l
 If you want to return multiple results, set `allowMultiMatch` to `true`<!-- -->;
 
 This API is temporarily unavailable in the private deployment environment
+
+私有化部署环境暂无法使用本接口
 
 ### getbylcscids_1
 
@@ -730,6 +732,8 @@ By default, if multiple devices with the same C number are matched in the same l
 If you want to return multiple results, set `allowMultiMatch` to `true`<!-- -->;
 
 This API is temporarily unavailable in the private deployment environment
+
+私有化部署环境暂无法使用本接口
 
 ## Example
 
@@ -1054,6 +1058,10 @@ Promise&lt;Array&lt;[ILIB\_DeviceSearchItem](../interfaces/ILIB_DeviceSearchItem
 
 List of searched device properties
 
+## Remarks
+
+本接口为 \*\*模糊搜索\*\*，可能返回社区伪编号（如 `C99xxxxxxx`<!-- -->）或近似结果（如 `C14604` 命中近似型号）； 需要按属性精确检索请用 [searchByProperties](./LIB_Device.md)<!-- -->（如 `{ supplierId: 'C1523' }`<!-- -->）
+
 ## Example
 
 ```javascript
@@ -1188,6 +1196,10 @@ _(Optional)_ Page count
 Promise&lt;Array&lt;[ILIB\_DeviceSearchItem](../interfaces/ILIB_DeviceSearchItem.md)<!-- -->&gt;&gt;
 
 List of searched device properties
+
+## Remarks
+
+该接口暂时不支持工程库的精确搜索； 需精确检索时传 `{ supplierId, partNumber, partCode, … }` 等属性，与 [search](./LIB_Device.md) 的模糊搜索互补
 
 ## Example
 

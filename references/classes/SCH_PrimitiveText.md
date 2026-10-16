@@ -713,7 +713,7 @@ const beforeContent = text.getState_Content();
 const beforeColor = text.getState_TextColor();
 const beforeFontSize = text.getState_FontSize();
 
-// 3. 批量修改：平移位置、内容更新、颜色改蓝、字号 20、加粗
+// 3. 批量修改：平移位置、内容更新、颜色改蓝、字号 20（单位 0.01inch，即 0.2inch）、加粗
 await eda.sch_PrimitiveText.modify(textId, {
 	x: x + 200,
 	y: y + 100,

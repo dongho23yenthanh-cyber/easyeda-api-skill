@@ -74,6 +74,21 @@ _(Optional)_ 方法是否异步（返回 Promise，调用时需 `await`<!-- -->�
 </td></tr>
 <tr><td>
 
+[notRecommendedFor?](./ISYS_HelpMethodDetail.md)
+
+</td><td>
+
+</td><td>
+
+Array&lt;[ISYS\_HelpAudienceEntry](./ISYS_HelpAudienceEntry.md)<!-- -->&gt;
+
+</td><td>
+
+_(Optional)_ 不推荐的受众 / 场景（来自 `@notRecommendedFor`<!-- -->，可多个）
+
+</td></tr>
+<tr><td>
+
 [params?](./ISYS_HelpMethodDetail.md)
 
 </td><td>
@@ -85,6 +100,21 @@ Array&lt;{ name: string; type?: string; description?: string; required?: boolean
 </td><td>
 
 _(Optional)_ 入参列表
+
+</td></tr>
+<tr><td>
+
+[recommendedFor?](./ISYS_HelpMethodDetail.md)
+
+</td><td>
+
+</td><td>
+
+Array&lt;[ISYS\_HelpAudienceEntry](./ISYS_HelpAudienceEntry.md)<!-- -->&gt;
+
+</td><td>
+
+_(Optional)_ 推荐的受众 / 场景（来自 `@recommendedFor`<!-- -->，可多个）
 
 </td></tr>
 <tr><td>
@@ -132,6 +162,21 @@ string
 _(Optional)_ 方法标题
 
 </td></tr>
+<tr><td>
+
+[visibility?](./ISYS_HelpMethodDetail.md)
+
+</td><td>
+
+</td><td>
+
+string
+
+</td><td>
+
+_(Optional)_ 方法可见性（`public` / `beta` / `alpha`<!-- -->）
+
+</td></tr>
 </tbody></table>
 
 ---
@@ -174,6 +219,18 @@ example?: string;
 isAsync?: boolean;
 ```
 
+### notrecommendedfor
+
+# ISYS\_HelpMethodDetail.notRecommendedFor property
+
+不推荐的受众 / 场景（来自 `@notRecommendedFor`<!-- -->，可多个）
+
+## Signature
+
+```typescript
+notRecommendedFor?: Array<ISYS_HelpAudienceEntry>;
+```
+
 ### params
 
 # ISYS\_HelpMethodDetail.params property
@@ -190,6 +247,18 @@ params?: Array<{
 		required?: boolean;
 		deprecated?: string;
 	}>;
+```
+
+### recommendedfor
+
+# ISYS\_HelpMethodDetail.recommendedFor property
+
+推荐的受众 / 场景（来自 `@recommendedFor`<!-- -->，可多个）
+
+## Signature
+
+```typescript
+recommendedFor?: Array<ISYS_HelpAudienceEntry>;
 ```
 
 ### remarks
@@ -226,4 +295,16 @@ returns?: { type?: string; description?: string };
 
 ```typescript
 title?: string;
+```
+
+### visibility
+
+# ISYS\_HelpMethodDetail.visibility property
+
+方法可见性（`public` / `beta` / `alpha`<!-- -->）
+
+## Signature
+
+```typescript
+visibility?: string;
 ```

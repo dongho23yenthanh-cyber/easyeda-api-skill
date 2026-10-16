@@ -170,6 +170,7 @@
 | [EDMT_ItemType](enums/EDMT_ItemType.md) | Document tree project type |  |
 | [EDMT_ProjectCollaborationMode](enums/EDMT_ProjectCollaborationMode.md) | Project collaboration mode |  |
 | [EDMT_ProjectFileFormat](enums/EDMT_ProjectFileFormat.md) | 工程文件格式 |  |
+| [EDMT_ProjectReadyState](enums/EDMT_ProjectReadyState.md) | 工程就绪状态 |  |
 | [ELIB_DeviceJlcLibraryCategory](enums/ELIB_DeviceJlcLibraryCategory.md) | EasyEDA SMT library category |  |
 | [ELIB_LibraryType](enums/ELIB_LibraryType.md) | Comprehensive library library type |  |
 | [ELIB_PreviewType](enums/ELIB_PreviewType.md) | Preview view type |  |
@@ -223,6 +224,7 @@
 | [ESYS_ImportProjectImportOption](enums/ESYS_ImportProjectImportOption.md) | Import project import option |  |
 | [ESYS_ImportProjectSchematicObjectStyle](enums/ESYS_ImportProjectSchematicObjectStyle.md) | Import project schematic primitive style |  |
 | [ESYS_ImportProjectViaSolderMaskExpansion](enums/ESYS_ImportProjectViaSolderMaskExpansion.md) | Import project via solder mask extension |  |
+| [ESYS_JobState](enums/ESYS_JobState.md) | 作业状态 |  |
 | [ESYS_LeftPanelTab](enums/ESYS_LeftPanelTab.md) | Left panel tab |  |
 | [ESYS_LogType](enums/ESYS_LogType.md) | Log type |  |
 | [ESYS_NetlistType](enums/ESYS_NetlistType.md) | Netlist type |  |
@@ -320,6 +322,7 @@
 | [ILIB_LibraryItem](interfaces/ILIB_LibraryItem.md) | Library property |  |
 | [ILIB_PanelLibraryItem](interfaces/ILIB_PanelLibraryItem.md) | Panel library property |  |
 | [ILIB_PanelLibrarySearchItem](interfaces/ILIB_PanelLibrarySearchItem.md) | Searched panel library properties |  |
+| [ILIB_RegisterExtendLibraryProps](interfaces/ILIB_RegisterExtendLibraryProps.md) | 注册外部库的附加配置 |  |
 | [ILIB_SimulationModelItem](interfaces/ILIB_SimulationModelItem.md) | Simulation model properties |  |
 | [ILIB_SimulationModelSearchItem](interfaces/ILIB_SimulationModelSearchItem.md) | Searched simulation model properties |  |
 | [ILIB_SymbolItem](interfaces/ILIB_SymbolItem.md) | Symbol property |  |
@@ -347,6 +350,15 @@
 | [IPCB_PrimitivePadHeatWelding](interfaces/IPCB_PrimitivePadHeatWelding.md) | Pad thermal relief optimization parameters |  |
 | [IPCB_PrimitivePouredPourFill](interfaces/IPCB_PrimitivePouredPourFill.md) | Copper fill region |  |
 | [IPCB_PrimitiveSolderMaskAndPasteMaskExpansion](interfaces/IPCB_PrimitiveSolderMaskAndPasteMaskExpansion.md) | Solder mask / paste mask expansion |  |
+| [IPCB_RayTracerBackgroundConfig](interfaces/IPCB_RayTracerBackgroundConfig.md) | 光追背景配置 |  |
+| [IPCB_RayTracerLightConfig](interfaces/IPCB_RayTracerLightConfig.md) | 光追光源配置 |  |
+| [IPCB_RayTracerMaterialConfig](interfaces/IPCB_RayTracerMaterialConfig.md) | 光追选中材质（PBR）配置 |  |
+| [IPCB_RayTracerPcbMaterialConfig](interfaces/IPCB_RayTracerPcbMaterialConfig.md) | 光追 PCB 材质配置 |  |
+| [IPCB_RayTracerRenderConfigurations](interfaces/IPCB_RayTracerRenderConfigurations.md) | 光追渲染配置 |  |
+| [IPCB_RayTracerRendererConfig](interfaces/IPCB_RayTracerRendererConfig.md) | 光追渲染器配置 |  |
+| [IPCB_RayTracerSceneElement](interfaces/IPCB_RayTracerSceneElement.md) | 光追场景元素 |  |
+| [IPCB_RayTracerSceneElementTransform](interfaces/IPCB_RayTracerSceneElementTransform.md) | 光追场景元素变换参数 |  |
+| [IPCB_RayTracerTexture](interfaces/IPCB_RayTracerTexture.md) | 光追贴图（名称 + 缩放） |  |
 | [IPCB_SubstratePhysicalProperties](interfaces/IPCB_SubstratePhysicalProperties.md) | 基板物理属性 |  |
 | [IRawNet](interfaces/IRawNet.md) | 原始数据 - net |  |
 | [IRawPureSchematic](interfaces/IRawPureSchematic.md) | 原始数据 - pureSchematic |  |
@@ -370,9 +382,13 @@
 | [ISYS_HeaderMenuSub1MenuItem](interfaces/ISYS_HeaderMenuSub1MenuItem.md) | Top-level secondary menu item |  |
 | [ISYS_HeaderMenuSub2MenuItem](interfaces/ISYS_HeaderMenuSub2MenuItem.md) | Top-level tertiary menu item |  |
 | [ISYS_HeaderMenuTopMenuItem](interfaces/ISYS_HeaderMenuTopMenuItem.md) | Top-level primary menu item |  |
+| [ISYS_HelpAudienceEntry](interfaces/ISYS_HelpAudienceEntry.md) | 受众推荐条目（对应 `@recommendedFor` / `@notRecommendedFor` 标签） |  |
 | [ISYS_HelpClassSummary](interfaces/ISYS_HelpClassSummary.md) | 由 help 查询返回的类摘要 |  |
 | [ISYS_HelpData](interfaces/ISYS_HelpData.md) | lc-build 生成的 API jsonSchema（d.ts 的 JSON 形态） |  |
 | [ISYS_HelpMethodDetail](interfaces/ISYS_HelpMethodDetail.md) | Help 查询返回的方法详情 |  |
+| [ISYS_JobHandle](interfaces/ISYS_JobHandle.md) | 作业句柄 |  |
+| [ISYS_JobLogEntry](interfaces/ISYS_JobLogEntry.md) | 作业日志条目 |  |
+| [ISYS_JobStatus](interfaces/ISYS_JobStatus.md) | 作业状态详情 |  |
 | [ISYS_LogLine](interfaces/ISYS_LogLine.md) | Log line |  |
 | [ISYS_MathBBox](interfaces/ISYS_MathBBox.md) | BBox (minimum bounding rectangle) |  |
 | [ISYS_MathPoint](interfaces/ISYS_MathPoint.md) | Discrete points |  |

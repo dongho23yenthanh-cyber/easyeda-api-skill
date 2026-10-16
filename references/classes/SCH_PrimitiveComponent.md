@@ -441,6 +441,10 @@ Promise&lt;[ISCH\_PrimitiveComponent](./ISCH_PrimitiveComponent.md) \| undefined
 
 Device primitive object
 
+## Remarks
+
+- 引脚坐标可能不在布线栅格上（如出现 `698.5` 半格值），连接导线时两端须使用\*\*原始坐标\*\*，四舍五入会使端点散落为大量 `$xNnn` 短线； - `rotation` / `mirror` 必须填写\*\*真实值\*\*，硬编码 0 会使 90° 器件的引脚整体错位
+
 ## Example
 
 ```javascript
@@ -1282,6 +1286,12 @@ Promise&lt;Array&lt;[ISCH\_PrimitiveComponent](./ISCH_PrimitiveComponent.md)<!--
 
 Array of Device primitive objects
 
+## Remarks
+
+`allSchematicPages=true` 时本接口\*\*不会主动加载未打开的图页\*\*，只返回已加载图页中的器件
+
+如需覆盖全部图页，请先打开所有图页（如逐页 `openDocument`<!-- -->）再调用
+
 ## Example
 
 ```javascript
@@ -1445,6 +1455,12 @@ _(Optional)_ Whether to get the devices of all schematic sheets
 Promise&lt;Array&lt;string&gt;&gt;
 
 Array of Device primitive IDs
+
+## Remarks
+
+`allSchematicPages=true` 时本接口 \*\*不会主动加载未打开的图页\*\*，只返回已加载图页中的器件
+
+如需覆盖全部图页，请先打开所有图页（如逐页 `openDocument`<!-- -->）再调用
 
 ## Example
 

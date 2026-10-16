@@ -215,6 +215,10 @@ Promise&lt;[ISCH\_PrimitiveWire](./ISCH_PrimitiveWire.md) \| undefined&gt;
 
 Wire primitive object
 
+## Remarks
+
+WIRE 组即连通性模型：同网络折线若写成多个 WIRE 组，即使端点相同也不会连通； 编辑器 `create()` 会自动把同网络折线合并为一个 WIRE primitive group，跨组连通需确保段与段首尾相接
+
 ## Example
 
 ```javascript

@@ -236,7 +236,7 @@ Save File
 </td></tr>
 <tr><td>
 
-[saveFileToFileSystem(uri, fileData, fileName, force)](./SYS_FileSystem.md)
+[saveFileToFileSystem(uri, fileData, fileName)](./SYS_FileSystem.md)
 
 </td><td>
 
@@ -1292,7 +1292,6 @@ function saveFileToFileSystem(
 	uri: string,
 	fileData: File | Blob,
 	fileName?: string,
-	force?: boolean,
 ): Promise<boolean>;
 ```
 
@@ -1350,19 +1349,6 @@ string
 _(Optional)_ File name
 
 </td></tr>
-<tr><td>
-
-force
-
-</td><td>
-
-boolean
-
-</td><td>
-
-_(Optional)_ Force write (overwrite the file if it exists)
-
-</td></tr>
 </tbody></table>
 
 ## Returns
@@ -1376,3 +1362,5 @@ Whether the write operation was successful. If overwriting is not allowed but th
 Note 1: This API is only valid for clients. Calling it in a browser environment will always `throw Error`
 
 Note 2: This API requires the user to enable the extension external interaction permission, if not enabled, it will always `throw Error`
+
+注意 3：CLI 本地文件写入\*\*不做路径白名单校验\*\*、不受 `APP_PROJECT_DIR` 限制；`uri` 结尾带斜杠 `/`<!-- -->（Windows 为反斜杠 `\`<!-- -->）识别为目录，`force` 控制是否覆盖已存在文件

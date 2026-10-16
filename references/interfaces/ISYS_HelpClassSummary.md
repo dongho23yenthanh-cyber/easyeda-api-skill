@@ -50,7 +50,7 @@ _(Optional)_ 类废弃说明
 
 </td><td>
 
-Array&lt;string \| { name: string; comment?: string }&gt;
+Array&lt;string \| { name: string; comment?: string; visibility?: string }&gt;
 
 </td><td>
 
@@ -100,6 +100,21 @@ Record&lt;string, string \| undefined&gt;
 </td><td>
 
 _(Optional)_ 各接口标题（external 场景，键为接口名）
+
+</td></tr>
+<tr><td>
+
+[visibility?](./ISYS_HelpClassSummary.md)
+
+</td><td>
+
+</td><td>
+
+string
+
+</td><td>
+
+_(Optional)_ 类可见性（`public` / `beta` / `alpha`<!-- -->）
 
 </td></tr>
 </tbody></table>
@@ -156,6 +171,18 @@ title?: string;
 titles?: Record<string, string | undefined>;
 ```
 
+### visibility
+
+# ISYS\_HelpClassSummary.visibility property
+
+类可见性（`public` / `beta` / `alpha`<!-- -->）
+
+## Signature
+
+```typescript
+visibility?: string;
+```
+
 
 ---
 
@@ -170,9 +197,9 @@ titles?: Record<string, string | undefined>;
 ## Signature
 
 ```typescript
-methods: Array<string | { name: string; comment?: string }>;
+methods: Array<string | { name: string; comment?: string; visibility?: string }>;
 ```
 
 ## Remarks
 
-类场景为方法条目 `{ name, comment }`<!-- -->；external 场景为接口名 `string`<!-- -->（无注释结构）
+类场景为方法条目 `{ name, comment, visibility }`<!-- -->；external 场景为接口名 `string`<!-- -->（无注释结构）

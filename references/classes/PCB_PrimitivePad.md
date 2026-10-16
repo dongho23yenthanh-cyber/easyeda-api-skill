@@ -694,6 +694,10 @@ Promise&lt;Array&lt;[IPCB\_PrimitivePad](./IPCB_PrimitivePad.md)<!-- -->&gt;&gt;
 
 Array of Pad primitive objects
 
+## Remarks
+
+本接口 \*\*不包含封装内嵌的图元\*\*（如 USB-C 定位孔这类 FOOTPRINT 内的 FILL，layerId 12）； 封装内嵌图元需配合 `scope` 类能力获取（见 [getAll](./PCB_PrimitivePad.md)<!-- -->）
+
 ## Example
 
 ```javascript

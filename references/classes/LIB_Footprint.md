@@ -1160,6 +1160,10 @@ Promise&lt;Array&lt;[ILIB\_FootprintSearchItem](../interfaces/ILIB_FootprintSear
 
 List of searched footprint properties
 
+## Remarks
+
+该接口暂时不支持工程库的精确搜索
+
 ## Example
 
 ```javascript
